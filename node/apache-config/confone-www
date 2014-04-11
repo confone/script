@@ -1,0 +1,33 @@
+NameVirtualHost *:81
+Listen 81
+<VirtualHost *:81>
+	ServerAdmin webmaster@localhost
+
+	DocumentRoot /opt/confone/www/current
+	<Directory />
+        RewriteEngine On
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+        Options +FollowSymLinks
+	</Directory>
+	<Directory /opt/confone/www/current>
+        RewriteEngine On
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+        Options +FollowSymLinks
+	</Directory>
+
+	#ErrorLog ${APACHE_LOG_DIR}/error.log
+	ErrorLog /opt/confone/www/logs/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	#CustomLog ${APACHE_LOG_DIR}/payment_access.log combined
+	CustomLog /opt/confone/www/logs/access.log combined
+</VirtualHost>
