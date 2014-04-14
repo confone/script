@@ -25,7 +25,7 @@ while ($tableRow = $tableResult->fetch_array(MYSQLI_ASSOC)) {
     $primaryKeyArr = $primaryResult->fetch_array(MYSQLI_ASSOC);
 
     $content = genClass($table, $fields, $primaryKeyArr['Column_name']);
-    file_put_contents('../dao/parent/'.to_camel_case("_".$table."DaoParent.php"), $content);
+    file_put_contents('generated/'.to_camel_case("_".$table."DaoParent.php"), $content);
 }
 
 function genClass($table, $fields, $primaryKey) {
