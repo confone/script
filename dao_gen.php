@@ -1,5 +1,5 @@
 <?php
-$db_host = "192.168.0.119";
+$db_host = "localhost";
 $db_user = "root";
 $db_pass = "Langara2";
 $db_sche = $argv[1];
