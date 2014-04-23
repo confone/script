@@ -1,8 +1,8 @@
 <?php
 $db_host = "localhost";
 $db_user = "root";
-$db_pass = "Langara2";
-$db_sche = $argv[1];
+$db_pass = $argv[1];
+$db_sche = $argv[2];
 $base_class = 'AccountDaoBase';
 
 $conn = mysqli_connect("p:".$db_host, $db_user, $db_pass, $db_sche.'_0');
