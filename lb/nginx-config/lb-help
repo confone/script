@@ -1,0 +1,17 @@
+upstream confone_help {
+    server parrot:86;
+    server phoenix:86;
+}
+
+server {
+    listen 443;
+    server_name staging.help.confone.com;
+
+    ssl on;
+    ssl_certificate /etc/ssl/nginx/cert.pem;
+    ssl_certificate_key /etc/ssl/nginx/cert.key;
+
+    location / {
+        proxy_pass http://confone_help;
+    }
+}

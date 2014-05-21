@@ -1,0 +1,17 @@
+upstream confone_doc {
+    server parrot:85;
+    server phoenix:85;
+}
+
+server {
+    listen 443;
+    server_name staging.doc.confone.com;
+
+    ssl on;
+    ssl_certificate /etc/ssl/nginx/cert.pem;
+    ssl_certificate_key /etc/ssl/nginx/cert.key;
+
+    location / {
+        proxy_pass http://confone_doc;
+    }
+}

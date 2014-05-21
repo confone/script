@@ -1,0 +1,27 @@
+#!/bin/sh
+DATE=`date +%y%m%d%H%M%S`
+cd /opt/confone/doc/releases
+echo "Cloning branch production into /opt/confone/doc/releases/$DATE ..."
+git clone -b master https://pshen1983:Langara2@github.com/confone/doc.git $DATE
+
+if [ -d "$DATE" ]; then
+    echo "Backing up previous deployment ..."
+    cd /opt/confone/doc
+    rm current.bak
+    mv current current.bak
+    ln -s releases/$DATE current
+    cd current
+    echo "Removing 'database' and 'scripts' folder ..."
+    rm -rf database
+    rm -rf scripts
+    rm -rf .git
+    echo "Assigning production configuration to config.inc ..."
+    cd /opt/confone/doc/current/config
+    ln -s config.inc.staging config.inc
+    echo "Restarting apache service ..."
+    service apache2 restart
+    echo "Payment deployment SUCCESS ..."
+else
+    echo "Cannot clone branch 'production' ..."
+    echo "Payment deployment FAILED ..."
+fi
