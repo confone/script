@@ -1,7 +1,7 @@
 #!/bin/sh
 DATE=`date +%y%m%d%H%M%S`
 cd /opt/confone/help/releases
-echo "Cloning branch production into /opt/confone/help/releases/$DATE ..."
+echo "Cloning branch master into /opt/confone/help/releases/$DATE ..."
 git clone -b master https://pshen1983:Langara2@github.com/confone/help.git $DATE
 
 if [ -d "$DATE" ]; then
@@ -17,7 +17,7 @@ if [ -d "$DATE" ]; then
     rm -rf .git
     echo "Assigning production configuration to config.inc ..."
     cd /opt/confone/help/current/config
-    ln -s config.inc.staging config.inc
+    ln -s config.inc.production config.inc
     echo "Restarting apache service ..."
     service apache2 restart
     echo "Payment deployment SUCCESS ..."
