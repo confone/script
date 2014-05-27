@@ -25,4 +25,4 @@ mkdir /opt/confone/help/logs
 chmod 777 /opt/confone/help/logs
 mkdir /opt/confone/www/releases
 mkdir /opt/confone/www/logs
-chmod 777 /opt/confone/www
+chmod 777 /opt/confone/www/logs
